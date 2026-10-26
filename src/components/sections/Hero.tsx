@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Terminal, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Sparkles, GraduationCap } from 'lucide-react';
 import { GithubIcon } from '../icons/BrandIcons';
 import { Container } from '../layout/Container';
 import { Button } from '../ui/Button';
@@ -41,12 +41,12 @@ export const Hero: React.FC = () => {
 
             {/* Editorial Heading - Concise & Punchy */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-              Xây dựng ứng dụng web <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">hiện đại, trực quan</span> và hiệu năng cao.
+              Xây dựng ứng dụng web & mobile <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">hiện đại, trực quan</span> và hiệu năng cao.
             </h1>
 
-            {/* Lead Narrative - Short */}
+            {/* Lead Narrative - Personal & Punchy */}
             <p className="text-base text-slate-600 max-w-xl leading-relaxed">
-              Tôi là <span className="text-slate-900 font-semibold">{PERSONAL_INFO.name}</span> (@{PERSONAL_INFO.handle}). Software Developer chuyên phát triển sản phẩm web với TypeScript, React, Java backend và trải nghiệm người dùng mượt mà.
+              Tôi là <span className="text-slate-900 font-bold">{PERSONAL_INFO.name}</span> (Sinh năm {PERSONAL_INFO.birthYear}, sinh viên Kỹ thuật Phần mềm tại <span className="text-sky-700 font-semibold">{PERSONAL_INFO.university}</span>). Software Developer chuyên sâu về React, TypeScript, Java Backend, Mobile và trải nghiệm giao diện tinh chuẩn.
             </p>
 
             {/* Action CTA Buttons */}
@@ -73,30 +73,30 @@ export const Hero: React.FC = () => {
               </Button>
             </div>
 
-            {/* Quick Metrics Bar */}
+            {/* Quick Metrics Bar - Direct Info */}
             <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-md">
               <div>
-                <p className="text-2xl font-bold font-mono text-slate-900 tracking-tight">
-                  {PERSONAL_INFO.yearsOfExperience}
+                <p className="text-xl sm:text-2xl font-bold font-mono text-slate-900 tracking-tight">
+                  FPT Univ
                 </p>
                 <p className="text-xs text-slate-500 font-mono mt-0.5">
-                  Kinh nghiệm
+                  Học vấn (SE)
                 </p>
               </div>
               <div>
-                <p className="text-2xl font-bold font-mono text-sky-600 tracking-tight">
-                  {PERSONAL_INFO.uptimeRecord}
+                <p className="text-xl sm:text-2xl font-bold font-mono text-sky-600 tracking-tight">
+                  Gen 2004
                 </p>
                 <p className="text-xs text-slate-500 font-mono mt-0.5">
-                  Độ ổn định
+                  Năm sinh
                 </p>
               </div>
               <div>
-                <p className="text-2xl font-bold font-mono text-slate-900 tracking-tight">
+                <p className="text-xl sm:text-2xl font-bold font-mono text-slate-900 tracking-tight">
                   {PERSONAL_INFO.completedProjects}
                 </p>
                 <p className="text-xs text-slate-500 font-mono mt-0.5">
-                  Dự án thực tế
+                  Dự án GitHub
                 </p>
               </div>
             </div>
@@ -128,26 +128,32 @@ export const Hero: React.FC = () => {
               {/* Code Screen */}
               <div className="p-5 font-mono text-xs leading-relaxed space-y-3 bg-white text-slate-800">
                 <div className="text-slate-400 flex items-center justify-between text-[11px]">
-                  <span>// Hồ sơ lập trình viên</span>
+                  <span>// Thông tin lập trình viên</span>
                   <span className="text-emerald-600 font-medium">READY TO WORK</span>
                 </div>
 
                 <div className="space-y-1 text-slate-700">
                   <p>
                     <span className="text-sky-600">const</span>{' '}
-                    <span className="text-blue-600 font-semibold">quanNguyen</span> = {'{'}
+                    <span className="text-blue-600 font-semibold">developer</span> = {'{'}
                   </p>
                   <p className="pl-4 text-slate-600">
-                    handle: <span className="text-emerald-600">'quannguyen89s'</span>,
+                    name: <span className="text-emerald-600">'{PERSONAL_INFO.name}'</span>,
                   </p>
                   <p className="pl-4 text-slate-600">
-                    role: <span className="text-sky-600">'Software Developer'</span>,
+                    birthYear: <span className="text-sky-600">{PERSONAL_INFO.birthYear}</span>,
                   </p>
                   <p className="pl-4 text-slate-600">
-                    stack: [<span className="text-amber-700">'React'</span>, <span className="text-amber-700">'TypeScript'</span>, <span className="text-amber-700">'Java'</span>],
+                    university: <span className="text-emerald-600">'{PERSONAL_INFO.university}'</span>,
                   </p>
                   <p className="pl-4 text-slate-600">
-                    openToWork: <span className="text-emerald-600 font-semibold">true</span>,
+                    github: <span className="text-emerald-600">'@{PERSONAL_INFO.handle}'</span>,
+                  </p>
+                  <p className="pl-4 text-slate-600">
+                    stack: [<span className="text-amber-700">'React'</span>, <span className="text-amber-700">'TypeScript'</span>, <span className="text-amber-700">'Java'</span>, <span className="text-amber-700">'Node'</span>],
+                  </p>
+                  <p className="pl-4 text-slate-600">
+                    status: <span className="text-emerald-600 font-semibold">'Available for Hire'</span>,
                   </p>
                   <p>{'};'}</p>
                 </div>
@@ -156,7 +162,7 @@ export const Hero: React.FC = () => {
                 <div className="pt-3 border-t border-slate-100 space-y-2">
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                      <span>Frontend & UI Performance</span>
+                      <span>Frontend & Mobile (React, RN, Tailwind)</span>
                       <span className="text-sky-600 font-semibold">98% Score</span>
                     </div>
                     <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
@@ -166,7 +172,7 @@ export const Hero: React.FC = () => {
 
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                      <span>Clean Architecture & Strict Types</span>
+                      <span>Backend & Database (Java, Node, SQL)</span>
                       <span className="text-emerald-600 font-semibold">100% Validated</span>
                     </div>
                     <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">

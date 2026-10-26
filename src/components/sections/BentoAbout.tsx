@@ -7,7 +7,8 @@ import {
   Zap, 
   GitBranch, 
   Layers, 
-  ExternalLink 
+  ExternalLink,
+  GraduationCap
 } from 'lucide-react';
 import { Container } from '../layout/Container';
 import { SectionHeader } from '../ui/SectionHeader';
@@ -42,12 +43,12 @@ export const BentoAbout: React.FC = () => {
           number="// 01"
           badge="GIỚI THIỆU"
           title="Tập trung vào chất lượng và tốc độ."
-          subtitle="Kết hợp tư duy lập trình vững vàng với trải nghiệm giao diện người dùng tinh gọn, hiện đại."
+          subtitle="Kết hợp tư duy lập trình vững vàng tại FPT University với chuẩn mực trải nghiệm UI/UX tinh tế."
         />
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-4">
-          {/* Bento Card 1: Core Philosophy (Col 8) */}
+          {/* Bento Card 1: Core Philosophy & Background (Col 8) */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,41 +59,41 @@ export const BentoAbout: React.FC = () => {
             <div className="space-y-3 relative z-10">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-sky-50 text-sky-700 border border-sky-200">
-                  <Cpu className="w-4 h-4" />
+                  <GraduationCap className="w-4 h-4" />
                 </span>
                 <span className="text-xs font-mono uppercase tracking-wider text-sky-700 font-semibold">
-                  Triết lý phát triển
+                  Học vấn & Nền tảng
                 </span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                "Đơn giản, hiệu quả và tối ưu trải nghiệm."
+                {PERSONAL_INFO.name} — Sinh viên FPT University (Gen 2004)
               </h3>
 
               <p className="text-sm text-slate-600 leading-relaxed max-w-xl">
-                Không tạo code phức tạp không cần thiết. Tôi ưu tiên xây dựng các thành phần độc lập, dễ bảo trì, tải nhanh và tương tác mượt mà trên mọi thiết bị.
+                Đang theo học chuyên ngành Kỹ thuật Phần mềm. Đam mê xây dựng các sản phẩm thực tế kết hợp giữa tư duy Clean Architecture, tốc độ xử lý nhanh và giao diện người dùng mượt mà theo chuẩn Emil Motion.
               </p>
 
               {/* 3 mini cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-100">
                   <p className="text-xs font-semibold text-slate-800">Clean Architecture</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Tách biệt logic và giao diện.</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Tách biệt logic, dữ liệu và view.</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-100">
                   <p className="text-xs font-semibold text-slate-800">Hiệu năng cao</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Tối ưu render và assets.</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Tối ưu render & zero CLS.</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-100">
-                  <p className="text-xs font-semibold text-slate-800">Mobile First</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Trải nghiệm chạm mượt mà.</p>
+                  <p className="text-xs font-semibold text-slate-800">Mobile & Web</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Đa nền tảng React & Expo.</p>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-mono">Chuẩn TypeScript Strict</span>
-              <span className="text-sky-700 font-mono font-medium">3+ Năm Thực Chiến</span>
+              <span className="font-mono">FPT University • Software Engineering</span>
+              <span className="text-sky-700 font-mono font-medium">Gen 2004</span>
             </div>
           </motion.div>
 
@@ -122,7 +123,7 @@ export const BentoAbout: React.FC = () => {
                   {currentTime || '16:00:00'}
                 </div>
                 <p className="text-xs font-mono text-sky-700 mt-0.5">
-                  Giờ Việt Nam (Hà Nội / HCM)
+                  Việt Nam (Hà Nội)
                 </p>
               </div>
 
@@ -132,7 +133,7 @@ export const BentoAbout: React.FC = () => {
                   <span>{PERSONAL_INFO.location}</span>
                 </div>
                 <p className="text-xs text-slate-500 leading-normal">
-                  Làm việc linh hoạt Onsite / Hybrid / Remote toàn cầu.
+                  Sẵn sàng làm việc Onsite tại Hà Nội hoặc Remote linh hoạt.
                 </p>
               </div>
             </div>
@@ -175,7 +176,7 @@ export const BentoAbout: React.FC = () => {
             </div>
 
             <div className="pt-3 border-t border-slate-100 text-xs text-slate-500 font-mono">
-              Đo lường bằng chỉ số thực tế
+              Đo lường bằng chỉ số & dự án thực tế
             </div>
           </motion.div>
 
@@ -193,26 +194,34 @@ export const BentoAbout: React.FC = () => {
                   <Layers className="w-4 h-4" />
                 </span>
                 <span className="text-xs font-mono uppercase tracking-wider text-blue-700 font-semibold">
-                  Công nghệ cốt lõi
+                  Công nghệ trọng tâm
                 </span>
               </div>
 
               <p className="text-xs text-slate-600">
-                Bộ công cụ sử dụng hàng ngày trong phát triển phần mềm:
+                Các công cụ sử dụng thường xuyên trong cả 6 nhóm công nghệ:
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-0.5">
                 {[
+                  'JavaScript',
                   'TypeScript',
-                  'React',
-                  'Tailwind CSS',
-                  'Node.js',
                   'Java',
-                  'REST API',
                   'SQL',
-                  'Git',
+                  'React.js',
+                  'Tailwind CSS',
                   'Vite',
-                  'Responsive',
+                  'Node.js',
+                  'Express.js',
+                  'Spring Boot',
+                  'React Native',
+                  'Expo',
+                  'MongoDB',
+                  'PostgreSQL',
+                  'Supabase',
+                  'Git',
+                  'Postman',
+                  'JWT',
                 ].map((tool) => (
                   <span
                     key={tool}
@@ -225,7 +234,7 @@ export const BentoAbout: React.FC = () => {
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
-              <span>Đầy đủ kiểu dữ liệu</span>
+              <span>Đầy đủ 6 nhóm công nghệ</span>
               <span className="text-sky-700 font-medium">Type-Safe</span>
             </div>
           </motion.div>
@@ -244,7 +253,7 @@ export const BentoAbout: React.FC = () => {
                   <GitBranch className="w-4 h-4" />
                 </span>
                 <span className="text-xs font-mono uppercase tracking-wider text-emerald-700 font-semibold">
-                  GitHub
+                  GitHub Profile
                 </span>
               </div>
 
