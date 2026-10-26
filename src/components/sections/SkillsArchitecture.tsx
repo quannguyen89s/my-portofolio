@@ -45,15 +45,15 @@ export const SkillsArchitecture: React.FC = () => {
     : SKILL_CATEGORIES.filter((c) => c.id === selectedCategory);
 
   return (
-    <section id="skills" className="py-16 sm:py-24 relative">
+    <section id="skills" className="py-16 sm:py-24 relative border-b border-slate-200/80">
       <Container size="wide">
         <SectionHeader
-          number="// 03"
-          badge="NĂNG LỰC KỸ THUẬT"
-          title="Hệ sinh thái kỹ năng & công nghệ."
-          subtitle="Tổ hợp 6 nhóm năng lực chuyên môn: từ nền tảng ngôn ngữ, web/mobile đến kiến trúc backend và dữ liệu."
+          number="// 02"
+          badge="KỸ NĂNG & CÔNG NGHỆ"
+          title="Hệ sinh thái kỹ năng chuyên môn."
+          subtitle="Tổ hợp 6 nhóm năng lực: từ ngôn ngữ lập trình cốt lõi, web/mobile đến kiến trúc backend và cơ sở dữ liệu."
           action={
-            <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200">
+            <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200/80">
               <button
                 onClick={() => setSelectedCategory('all')}
                 className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
@@ -96,7 +96,7 @@ export const SkillsArchitecture: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.25, delay: idx * 0.04 }}
-                  className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 transition-all duration-200 shadow-card-subtle hover:shadow-card-hover flex flex-col justify-between group"
+                  className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-sky-300 transition-all duration-200 shadow-card-subtle hover:shadow-card-hover flex flex-col justify-between group"
                 >
                   <div className="space-y-4">
                     {/* Header */}
@@ -157,7 +157,7 @@ export const SkillsArchitecture: React.FC = () => {
 
         {/* 4 Pillars - Quality & Standards */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-1.5 hover:border-slate-300 transition-colors">
+          <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 hover:border-slate-300 transition-colors">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <h5 className="text-xs font-bold text-slate-900">Clean Code & Strict Types</h5>
@@ -167,17 +167,17 @@ export const SkillsArchitecture: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-1.5 hover:border-slate-300 transition-colors">
+          <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 hover:border-slate-300 transition-colors">
             <div className="flex items-center gap-2">
               <Gauge className="w-4 h-4 text-sky-600" />
-              <h5 className="text-xs font-bold text-slate-900">Tối ưu tốc độ (Emil Motion)</h5>
+              <h5 className="text-xs font-bold text-slate-900">Tối ưu tốc độ & Motion</h5>
             </div>
             <p className="text-[11px] text-slate-500 leading-normal">
-              Tải trang dưới 0.5s, tương tác cảm giác vật lý 60fps chuẩn Emil Design.
+              Tải trang dưới 0.5s, tương tác cảm giác vật lý 60fps chuẩn shadcn & Emil Design.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-1.5 hover:border-slate-300 transition-colors">
+          <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 hover:border-slate-300 transition-colors">
             <div className="flex items-center gap-2">
               <Network className="w-4 h-4 text-blue-600" />
               <h5 className="text-xs font-bold text-slate-900">API chuẩn & Bảo mật JWT</h5>
@@ -187,7 +187,7 @@ export const SkillsArchitecture: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-1.5 hover:border-slate-300 transition-colors">
+          <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 hover:border-slate-300 transition-colors">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-amber-600" />
               <h5 className="text-xs font-bold text-slate-900">Tiêu chuẩn WCAG 2.2 AA</h5>

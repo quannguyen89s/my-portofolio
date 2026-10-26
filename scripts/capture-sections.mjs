@@ -15,9 +15,9 @@ async function captureSections() {
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 950, deviceScaleFactor: 1.5 });
   await page.goto('http://127.0.0.1:3000/', { waitUntil: 'networkidle0' });
-  await delay(600);
+  await delay(800);
 
-  const sections = ['about', 'projects', 'skills', 'journey', 'contact'];
+  const sections = ['projects', 'skills', 'journey', 'contact'];
 
   for (const id of sections) {
     const el = await page.$(`#${id}`);
@@ -27,12 +27,6 @@ async function captureSections() {
       await el.screenshot({ path: path.join(__dirname, `../section-${id}.png`) });
       console.log(`Captured section-${id}.png`);
     }
-  }
-
-  const firstProject = await page.$('.space-y-12 > div:first-child');
-  if (firstProject) {
-    await firstProject.screenshot({ path: path.join(__dirname, '../card1-verify.png') });
-    console.log('Captured card1-verify.png');
   }
 
   await browser.close();

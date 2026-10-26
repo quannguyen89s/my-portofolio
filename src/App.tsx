@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
-import { BentoAbout } from './components/sections/BentoAbout';
 import { ProjectShowcase } from './components/sections/ProjectShowcase';
 import { SkillsArchitecture } from './components/sections/SkillsArchitecture';
 import { JourneyTimeline } from './components/sections/JourneyTimeline';
@@ -14,10 +13,9 @@ export const App: React.FC = () => {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections: Personal Info -> Projects -> Skills -> Journey -> Contact */}
       <main className="flex-1">
         <Hero />
-        <BentoAbout />
         <ProjectShowcase />
         <SkillsArchitecture />
         <JourneyTimeline />

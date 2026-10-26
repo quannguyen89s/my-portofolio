@@ -1,64 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, MapPin, CheckCircle2 } from 'lucide-react';
 import { Container } from '../layout/Container';
 import { SectionHeader } from '../ui/SectionHeader';
 import { TIMELINE_ITEMS } from '../../data/portfolioData';
 
 export const JourneyTimeline: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'work' | 'education'>('all');
-
-  const filteredItems = filter === 'all'
-    ? TIMELINE_ITEMS
-    : TIMELINE_ITEMS.filter((item) => item.type === filter);
-
   return (
-    <section id="journey" className="py-16 sm:py-24 relative">
+    <section id="journey" className="py-16 sm:py-24 relative border-b border-slate-200/80">
       <Container size="wide">
         <SectionHeader
-          number="// 04"
-          badge="HÀNH TRÌNH"
-          title="Kinh nghiệm & quá trình phát triển."
-          subtitle="Các mốc thời gian học tập, rèn luyện kỹ thuật và thực hiện dự án."
-          action={
-            <div className="flex gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200">
-              <button
-                onClick={() => setFilter('all')}
-                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  filter === 'all'
-                    ? 'bg-white text-sky-700 font-semibold shadow-xs border border-slate-200/60'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Tất cả
-              </button>
-              <button
-                onClick={() => setFilter('work')}
-                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  filter === 'work'
-                    ? 'bg-white text-sky-700 font-semibold shadow-xs border border-slate-200/60'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Dự án & Công việc
-              </button>
-              <button
-                onClick={() => setFilter('education')}
-                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  filter === 'education'
-                    ? 'bg-white text-sky-700 font-semibold shadow-xs border border-slate-200/60'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Học vấn & Nền tảng
-              </button>
-            </div>
-          }
+          number="// 03"
+          badge="HỌC VẤN & ĐÀO TẠO"
+          title="Nền tảng học thuật."
+          subtitle="Quá trình đào tạo chính quy ngành Kỹ thuật Phần mềm tại FPT University Đà Nẵng."
         />
 
         {/* Timeline Stream */}
-        <div className="relative border-l-2 border-slate-200 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-8">
-          {filteredItems.map((item, idx) => (
+        <div className="relative border-l-2 border-slate-200 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-8 max-w-4xl">
+          {TIMELINE_ITEMS.map((item, idx) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, x: -8 }}
@@ -73,24 +33,20 @@ export const JourneyTimeline: React.FC = () => {
               </div>
 
               {/* Card Container */}
-              <div className="p-5 sm:p-7 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 transition-all duration-200 shadow-card-subtle space-y-3">
+              <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-sky-300 transition-all duration-200 shadow-card-subtle space-y-3.5">
                 {/* Meta Bar */}
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <span className="p-1 rounded-md bg-sky-50 text-sky-700">
-                      {item.type === 'work' ? (
-                        <Briefcase className="w-3.5 h-3.5" />
-                      ) : (
-                        <GraduationCap className="w-3.5 h-3.5" />
-                      )}
+                      <GraduationCap className="w-4 h-4" />
                     </span>
                     <span className="text-xs font-mono font-semibold text-sky-700">
                       {item.period}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-sky-600" />
                     <span>{item.location}</span>
                   </div>
                 </div>
@@ -100,7 +56,7 @@ export const JourneyTimeline: React.FC = () => {
                   <h3 className="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                     {item.role}
                   </h3>
-                  <p className="text-xs font-semibold text-slate-700 mt-0.5">
+                  <p className="text-xs font-semibold text-sky-700 mt-0.5">
                     {item.company}
                   </p>
                 </div>
@@ -112,8 +68,8 @@ export const JourneyTimeline: React.FC = () => {
                 {/* Highlights List */}
                 <div className="space-y-1.5 pt-1">
                   {item.highlights.map((highlight, hIdx) => (
-                    <div key={hIdx} className="flex items-center gap-2 text-xs text-slate-700">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0" />
+                    <div key={hIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
                       <span>{highlight}</span>
                     </div>
                   ))}
@@ -125,7 +81,7 @@ export const JourneyTimeline: React.FC = () => {
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-xs font-mono px-2 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-200"
+                        className="text-xs font-mono px-2 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-200/80"
                       >
                         {skill}
                       </span>

@@ -103,10 +103,10 @@ export const Contact: React.FC = () => {
     <section id="contact" className="py-16 sm:py-24 relative">
       <Container size="wide">
         <SectionHeader
-          number="// 05"
-          badge="LIÊN HỆ"
-          title="Kết nối & hợp tác."
-          subtitle="Hãy để lại lời nhắn nếu bạn cần trao đổi về dự án hoặc cơ hội hợp tác kỹ thuật."
+          number="// 04"
+          badge="LIÊN HỆ & KẾT NỐI"
+          title="Sẵn sàng trao đổi & hợp tác."
+          subtitle="Hãy gửi email hoặc để lại tin nhắn nếu bạn cần trao đổi về dự án hoặc cơ hội thực tập tại Đà Nẵng / Remote."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

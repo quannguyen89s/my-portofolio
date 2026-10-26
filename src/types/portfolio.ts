@@ -1,4 +1,4 @@
-export type ProjectCategory = 'All' | 'Full-Stack Apps' | 'Distributed Systems' | 'AI & Tools';
+export type ProjectCategory = 'All' | 'Smart Home / IoT' | 'Web Apps' | 'Backend & API' | 'Mobile';
 
 export interface ProjectMetric {
   label: string;
@@ -17,8 +17,9 @@ export interface CaseStudyData {
 export interface Project {
   id: string;
   title: string;
+  repoName?: string;
   tagline: string;
-  category: 'Full-Stack Apps' | 'Distributed Systems' | 'AI & Tools';
+  category: string;
   featured: boolean;
   year: string;
   description: string;
