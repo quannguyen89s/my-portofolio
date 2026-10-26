@@ -23,29 +23,29 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        'mb-12 md:mb-16',
-        alignment === 'center' ? 'text-center mx-auto max-w-2xl' : 'flex flex-col md:flex-row md:items-end md:justify-between gap-6',
+        'mb-10 md:mb-12',
+        alignment === 'center' ? 'text-center mx-auto max-w-2xl' : 'flex flex-col md:flex-row md:items-end md:justify-between gap-4',
         className
       )}
     >
-      <div className={alignment === 'center' ? '' : 'max-w-2xl'}>
-        <div className={cn('flex items-center gap-2 mb-3', alignment === 'center' && 'justify-center')}>
+      <div className={alignment === 'center' ? '' : 'max-w-xl'}>
+        <div className={cn('flex items-center gap-2 mb-2.5', alignment === 'center' && 'justify-center')}>
           {number && (
-            <span className="font-mono text-xs text-sky-400 font-semibold tracking-wider">
+            <span className="font-mono text-xs text-sky-600 font-semibold tracking-wider">
               {number}
             </span>
           )}
           {badge && (
-            <span className="inline-flex items-center text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <span className="inline-flex items-center text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
               {badge}
             </span>
           )}
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-100">
+        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-slate-600 leading-normal">
             {subtitle}
           </p>
         )}

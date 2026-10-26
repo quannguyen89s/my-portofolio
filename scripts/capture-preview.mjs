@@ -38,7 +38,7 @@ async function capture() {
   await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
   await page.evaluate(() => {
     const buttons = Array.from(document.querySelectorAll('button'));
-    const modalBtn = buttons.find(b => b.textContent && b.textContent.includes('Deep-Dive Case Study'));
+    const modalBtn = buttons.find(b => b.textContent && (b.textContent.includes('Chi tiết kiến trúc') || b.textContent.includes('Chi tiết')));
     if (modalBtn) modalBtn.click();
   });
   await delay(600);

@@ -25,41 +25,41 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={`Architectural Case Study — ${project.title}`}
+      title={`Chi tiết dự án — ${project.title}`}
       maxWidth="4xl"
     >
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* Header Summary */}
-        <div className="space-y-3 pb-6 border-b border-white/[0.08]">
+        <div className="space-y-2.5 pb-5 border-b border-slate-200">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="electric">{project.category}</Badge>
+            <Badge variant="ocean">{project.category}</Badge>
             <Badge variant="surface">{project.year}</Badge>
-            {project.featured && <Badge variant="success">Production Flagship</Badge>}
+            {project.featured && <Badge variant="success">Dự án chính</Badge>}
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
             {project.title}
           </h2>
-          <p className="text-base text-sky-300 font-medium leading-relaxed">
+          <p className="text-sm text-sky-700 font-medium">
             {project.tagline}
           </p>
 
-          <p className="text-sm text-slate-400 leading-relaxed pt-1">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-0.5">
             {caseStudy.overview}
           </p>
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {project.metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-xl bg-[#141C30] border border-white/[0.06] text-center sm:text-left"
+              className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center sm:text-left"
             >
-              <p className="text-xs font-mono uppercase tracking-wider text-slate-400">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
                 {metric.label}
               </p>
-              <p className="text-2xl font-mono font-bold text-sky-400 mt-1">
+              <p className="text-xl font-mono font-bold text-sky-700 mt-0.5">
                 {metric.value}
               </p>
             </div>
@@ -67,63 +67,63 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         </div>
 
         {/* The Challenge & The Solution */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Challenge */}
-          <div className="p-5 rounded-xl bg-rose-500/[0.03] border border-rose-500/20 space-y-2">
-            <div className="flex items-center gap-2 text-rose-400 text-sm font-semibold">
-              <AlertTriangle className="w-4 h-4" />
-              <span>The Problem & Bottleneck</span>
+          <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-1.5">
+            <div className="flex items-center gap-1.5 text-rose-800 text-xs font-semibold">
+              <AlertTriangle className="w-4 h-4 text-rose-600" />
+              <span>Thách thức kỹ thuật</span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-700 leading-relaxed">
               {caseStudy.challenge}
             </p>
           </div>
 
           {/* Solution */}
-          <div className="p-5 rounded-xl bg-emerald-500/[0.03] border border-emerald-500/20 space-y-2">
-            <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Engineered Solution</span>
+          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-1.5">
+            <div className="flex items-center gap-1.5 text-emerald-800 text-xs font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Giải pháp triển khai</span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-700 leading-relaxed">
               {caseStudy.solution}
             </p>
           </div>
         </div>
 
         {/* Architectural Highlights */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
-            <Cpu className="w-4 h-4 text-sky-400" />
-            <span>Key Architectural Highlights</span>
+        <div className="space-y-2.5">
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
+            <Cpu className="w-4 h-4 text-sky-600" />
+            <span>Điểm sáng kiến trúc</span>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             {caseStudy.architectureHighlights.map((highlight, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 p-3 rounded-lg bg-[#141C30]/60 border border-white/[0.04] text-xs sm:text-sm text-slate-300"
+                className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-100 text-xs text-slate-700"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-2 shrink-0" />
-                <span className="leading-relaxed">{highlight}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
+                <span>{highlight}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Measurable Outcomes */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
-            <Activity className="w-4 h-4 text-emerald-400" />
-            <span>Quantifiable Business & Performance Outcomes</span>
+        <div className="space-y-2.5">
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
+            <Activity className="w-4 h-4 text-emerald-600" />
+            <span>Kết quả đạt được</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {caseStudy.keyOutcomes.map((outcome, idx) => (
               <div
                 key={idx}
-                className="p-3.5 rounded-xl bg-[#141C30] border border-white/[0.06] flex items-start gap-2.5"
+                className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span className="text-xs text-slate-300 leading-relaxed">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span className="text-xs text-slate-700">
                   {outcome}
                 </span>
               </div>
@@ -131,67 +131,37 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
         </div>
 
-        {/* Tech Stack Breakdown */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
-            <Layers className="w-4 h-4 text-indigo-400" />
-            <span>Tech Stack Breakdown</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {caseStudy.techStackBreakdown.map((group, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-xl bg-[#141C30] border border-white/[0.06] space-y-2"
-              >
-                <p className="text-xs font-semibold text-sky-300">
-                  {group.title}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {group.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0A0F1B] text-slate-300 border border-white/[0.05]"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Actions Footer */}
-        <div className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            {project.links.live && (
-              <Button
-                asAnchor
-                href={project.links.live}
-                target="_blank"
-                variant="primary"
-                size="md"
-                iconRight={<ExternalLink className="w-4 h-4" />}
-              >
-                Launch Live Application
-              </Button>
-            )}
+        <div className="pt-5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
             {project.links.github && (
               <Button
                 asAnchor
                 href={project.links.github}
                 target="_blank"
-                variant="secondary"
+                variant="primary"
                 size="md"
                 iconLeft={<GithubIcon className="w-4 h-4" />}
               >
-                Inspect Source Code
+                Mã nguồn GitHub
+              </Button>
+            )}
+            {project.links.live && (
+              <Button
+                asAnchor
+                href={project.links.live}
+                target="_blank"
+                variant="secondary"
+                size="md"
+                iconRight={<ExternalLink className="w-4 h-4" />}
+              >
+                Xem trực tiếp
               </Button>
             )}
           </div>
 
           <Button onClick={onClose} variant="ghost" size="md">
-            Close Case Study
+            Đóng
           </Button>
         </div>
       </div>

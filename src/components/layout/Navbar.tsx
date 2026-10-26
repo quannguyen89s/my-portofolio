@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Terminal } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { GithubIcon } from '../icons/BrandIcons';
 import { Container } from './Container';
 import { Button } from '../ui/Button';
+import { PERSONAL_INFO } from '../../data/portfolioData';
 
 interface NavItem {
   label: string;
@@ -10,11 +12,11 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Architecture', href: '#skills' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Giới thiệu', href: '#about' },
+  { label: 'Dự án', href: '#projects' },
+  { label: 'Kỹ năng', href: '#skills' },
+  { label: 'Hành trình', href: '#journey' },
+  { label: 'Liên hệ', href: '#contact' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -26,7 +28,6 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Simple active section detection
       const sections = NAV_ITEMS.map((item) => item.href.substring(1));
       const scrollPos = window.scrollY + 200;
 
@@ -47,8 +48,8 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#080C14]/85 backdrop-blur-md border-b border-white/[0.08] py-3.5 shadow-lg'
-          : 'bg-transparent py-5'
+          ? 'bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-xs'
+          : 'bg-transparent py-4'
       }`}
     >
       <Container size="wide">
@@ -56,34 +57,36 @@ export const Navbar: React.FC = () => {
           {/* Logo / Monogram */}
           <a
             href="#"
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-lg p-1"
-            aria-label="Alex Rivera Portfolio Home"
+            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 rounded-lg p-1"
+            aria-label="Quân Nguyễn Portfolio"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#141C30] border border-white/[0.1] group-hover:border-sky-500/50 flex items-center justify-center transition-all duration-200">
-              <Terminal className="w-4 h-4 text-sky-400" />
-            </div>
+            <img
+              src={PERSONAL_INFO.avatar}
+              alt={PERSONAL_INFO.name}
+              className="w-8 h-8 rounded-lg object-cover border border-slate-200 group-hover:border-sky-500 transition-colors shadow-xs"
+            />
             <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-slate-100 group-hover:text-sky-300 transition-colors">
-                alex.dev
+              <span className="font-bold text-sm tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">
+                {PERSONAL_INFO.name}
               </span>
-              <span className="text-[10px] font-mono text-slate-500 leading-none">
-                sys.arch
+              <span className="text-[11px] font-mono text-slate-500 leading-none">
+                @{PERSONAL_INFO.handle}
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#0F1523]/70 border border-white/[0.06] rounded-full px-3 py-1.5 backdrop-blur-md">
+          <nav className="hidden md:flex items-center gap-1 bg-white/80 border border-slate-200 rounded-full px-3 py-1.5 shadow-xs backdrop-blur-md">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.substring(1);
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-200 relative ${
+                  className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-150 relative ${
                     isActive
-                      ? 'text-sky-300 bg-sky-500/10 font-semibold shadow-glow-sm'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
+                      ? 'text-sky-700 bg-sky-50 font-semibold border border-sky-200'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   {item.label}
@@ -92,20 +95,27 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Action: Available Status & CTA */}
+          {/* Right Action: GitHub link & Contact CTA */}
           <div className="hidden sm:flex items-center gap-3">
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Available for Hire</span>
-            </div>
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub @quannguyen89s"
+              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-sky-300 transition-all shadow-xs flex items-center gap-2 text-xs font-mono font-medium"
+            >
+              <GithubIcon className="w-4 h-4 text-slate-800" />
+              <span>@quannguyen89s</span>
+            </a>
+
             <Button
               asAnchor
               href="#contact"
               size="sm"
-              variant="electric"
+              variant="primary"
               iconRight={<ArrowUpRight className="w-3.5 h-3.5" />}
             >
-              Let's Talk
+              Liên hệ
             </Button>
           </div>
 
@@ -113,8 +123,8 @@ export const Navbar: React.FC = () => {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#141C30] border border-white/[0.1] text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 cursor-pointer"
+              aria-label={mobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -131,24 +141,29 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="sm:hidden border-b border-white/[0.08] bg-[#0A0F1B]/95 backdrop-blur-xl px-4 py-6"
+            className="sm:hidden border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 py-6 shadow-lg"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.05] transition-colors"
+                  className="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:text-sky-600 hover:bg-slate-50 transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
-              <div className="pt-4 border-t border-white/[0.08] mt-2 flex flex-col gap-3">
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Available for high-impact roles</span>
-                </div>
+              <div className="pt-4 border-t border-slate-200 mt-2 flex flex-col gap-2.5">
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-xs font-mono font-medium"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                  <span>github.com/quannguyen89s</span>
+                </a>
                 <Button
                   asAnchor
                   href="#contact"
@@ -157,7 +172,7 @@ export const Navbar: React.FC = () => {
                   className="w-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Get in Touch
+                  Gửi tin nhắn
                 </Button>
               </div>
             </div>

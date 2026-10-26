@@ -3,7 +3,7 @@ import { cn } from '../../utils/cn';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
-  variant?: 'default' | 'electric' | 'outline' | 'success' | 'surface';
+  variant?: 'default' | 'electric' | 'ocean' | 'outline' | 'success' | 'surface';
   size?: 'sm' | 'md';
   dot?: boolean;
   className?: string;
@@ -18,11 +18,12 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const variants = {
-    default: 'bg-white/[0.06] text-slate-300 border border-white/[0.08]',
-    electric: 'bg-sky-500/10 text-sky-400 border border-sky-500/25 shadow-glow-sm',
-    outline: 'bg-transparent text-slate-400 border border-slate-700/60 hover:border-slate-500',
-    success: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/25',
-    surface: 'bg-[#151D30] text-slate-300 border border-white/[0.08]',
+    default: 'bg-slate-100 text-slate-700 border border-slate-200/80',
+    electric: 'bg-sky-50 text-sky-700 border border-sky-200 font-medium',
+    ocean: 'bg-sky-50 text-sky-700 border border-sky-200 font-medium',
+    outline: 'bg-transparent text-slate-600 border border-slate-200 hover:border-slate-400',
+    success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium',
+    surface: 'bg-white text-slate-700 border border-slate-200 shadow-xs',
   };
 
   const sizes = {
@@ -44,10 +45,10 @@ export const Badge: React.FC<BadgeProps> = ({
         <span
           className={cn(
             'w-1.5 h-1.5 rounded-full',
-            variant === 'electric'
-              ? 'bg-sky-400 shadow-[0_0_8px_#38bdf8]'
+            variant === 'electric' || variant === 'ocean'
+              ? 'bg-sky-600'
               : variant === 'success'
-              ? 'bg-emerald-400 shadow-[0_0_8px_#34d399]'
+              ? 'bg-emerald-500'
               : 'bg-slate-400'
           )}
         />

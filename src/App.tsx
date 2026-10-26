@@ -10,11 +10,11 @@ import { Contact } from './components/sections/Contact';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#080C14] text-slate-100 flex flex-col relative selection:bg-sky-500/20 selection:text-sky-300 bg-grid-pattern">
-      {/* Dynamic Navigation */}
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex flex-col relative selection:bg-sky-500/20 selection:text-sky-900 bg-grid-pattern">
+      {/* Navigation */}
       <Navbar />
 
-      {/* Main Content Flow */}
+      {/* Main Content Sections */}
       <main className="flex-1">
         <Hero />
         <BentoAbout />
