@@ -8,7 +8,7 @@ import { TIMELINE_ITEMS } from '../../data/portfolioData';
 export const JourneyTimeline: React.FC = () => {
   return (
     <section id="journey" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="narrow">
+      <Container size="default">
         <SectionHeader
           number="// 03"
           badge="HỌC VẤN & ĐÀO TẠO"
@@ -17,7 +17,7 @@ export const JourneyTimeline: React.FC = () => {
         />
 
         {/* Timeline Stream */}
-        <div className="relative border-l-2 border-slate-200 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-8 max-w-4xl">
+        <div className="relative border-l-2 border-slate-200 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-8">
           {TIMELINE_ITEMS.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -33,11 +33,11 @@ export const JourneyTimeline: React.FC = () => {
               </div>
 
               {/* Card Container */}
-              <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-sky-300 transition-all duration-200 shadow-card-subtle space-y-3.5">
+              <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-sky-300 transition-all duration-200 shadow-card-subtle space-y-4">
                 {/* Meta Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-100">
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <span className="p-1 rounded-md bg-sky-50 text-sky-700">
+                    <span className="p-1.5 rounded-lg bg-sky-50 text-sky-700">
                       <GraduationCap className="w-4 h-4" />
                     </span>
                     <span className="text-xs font-mono font-semibold text-sky-700">
@@ -53,22 +53,22 @@ export const JourneyTimeline: React.FC = () => {
 
                 {/* Role & Company */}
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                     {item.role}
                   </h3>
-                  <p className="text-xs font-semibold text-sky-700 mt-0.5">
+                  <p className="text-sm font-semibold text-sky-700 mt-0.5">
                     {item.company}
                   </p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
                   {item.description}
                 </p>
 
                 {/* Highlights List */}
-                <div className="space-y-1.5 pt-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2">
                   {item.highlights.map((highlight, hIdx) => (
-                    <div key={hIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                    <div key={hIdx} className="flex items-start gap-2.5 text-xs text-slate-700 p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/60">
                       <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
                       <span>{highlight}</span>
                     </div>
@@ -77,11 +77,11 @@ export const JourneyTimeline: React.FC = () => {
 
                 {/* Tech Pills */}
                 {item.skills.length > 0 && (
-                  <div className="pt-2.5 border-t border-slate-100 flex flex-wrap gap-1.5">
+                  <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-xs font-mono px-2 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-200/80"
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200/80"
                       >
                         {skill}
                       </span>

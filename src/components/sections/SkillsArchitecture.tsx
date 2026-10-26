@@ -46,7 +46,7 @@ export const SkillsArchitecture: React.FC = () => {
 
   return (
     <section id="skills" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="narrow">
+      <Container size="default">
         <SectionHeader
           number="// 02"
           badge="KỸ NĂNG & CÔNG NGHỆ"
@@ -56,7 +56,7 @@ export const SkillsArchitecture: React.FC = () => {
             <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200/80">
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
+                className={`text-xs font-medium px-3.5 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
                   selectedCategory === 'all'
                     ? 'bg-white text-sky-700 font-semibold shadow-xs border border-slate-200/60'
                     : 'text-slate-600 hover:text-slate-900'
@@ -68,7 +68,7 @@ export const SkillsArchitecture: React.FC = () => {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
+                  className={`text-xs font-medium px-3.5 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
                     selectedCategory === cat.id
                       ? 'bg-white text-sky-700 font-semibold shadow-xs border border-slate-200/60'
                       : 'text-slate-600 hover:text-slate-900'
@@ -81,8 +81,8 @@ export const SkillsArchitecture: React.FC = () => {
           }
         />
 
-        {/* 6 Category Bento Grid - 2 Column Clean Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+        {/* 6 Category Bento Grid - 3 Columns for wide balanced layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {displayedCategories.map((category, idx) => {
               const icon = CATEGORY_ICONS[category.id] || <Sparkles className="w-4 h-4 text-sky-600" />;
@@ -120,25 +120,26 @@ export const SkillsArchitecture: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Skills Pill Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {/* Skills Pill Flex Wrap - No Truncation */}
+                    <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill) => (
                         <div
                           key={skill.name}
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/70 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-150"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50/90 border border-slate-200/80 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-150"
                         >
-                          <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
-                            <span className="text-xs font-semibold text-slate-800">
-                              {skill.name}
-                            </span>
-                          </div>
-                          <Badge
-                            variant={skill.level === 'Expert' ? 'ocean' : 'default'}
-                            size="sm"
+                          <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
+                          <span className="text-xs font-semibold text-slate-800 whitespace-nowrap">
+                            {skill.name}
+                          </span>
+                          <span
+                            className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-medium ${
+                              skill.level === 'Expert'
+                                ? 'bg-sky-100 text-sky-800'
+                                : 'bg-slate-200/70 text-slate-700'
+                            }`}
                           >
                             {skill.level}
-                          </Badge>
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -156,7 +157,7 @@ export const SkillsArchitecture: React.FC = () => {
         </div>
 
         {/* 4 Pillars - Quality & Standards */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 hover:border-slate-300 transition-colors">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />

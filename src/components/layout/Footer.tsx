@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="border-t border-slate-200/90 bg-white pt-12 pb-10 text-slate-600">
-      <Container size="narrow">
+      <Container size="default">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-200/80">
           {/* Brand */}
           <div className="md:col-span-5 space-y-3">

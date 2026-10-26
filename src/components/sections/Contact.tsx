@@ -101,7 +101,7 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-16 sm:py-24 relative">
-      <Container size="narrow">
+      <Container size="default">
         <SectionHeader
           number="// 04"
           badge="LIÊN HỆ & KẾT NỐI"

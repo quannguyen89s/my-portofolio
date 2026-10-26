@@ -39,7 +39,7 @@ export const ProjectShowcase: React.FC = () => {
 
   return (
     <section id="projects" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="narrow">
+      <Container size="default">
         <SectionHeader
           number="// 01"
           badge="GITHUB REPOSITORIES & DỰ ÁN"
@@ -64,7 +64,7 @@ export const ProjectShowcase: React.FC = () => {
           }
         />
 
-        {/* Separated Repositories Stack (Viết tách nhau xuống) */}
+        {/* Separated Repositories Stack (Xếp dọc tách bạch) */}
         <div className="space-y-6 sm:space-y-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => {
@@ -78,7 +78,7 @@ export const ProjectShowcase: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.25, delay: idx * 0.03 }}
-                  className={`rounded-2xl bg-white border transition-all duration-200 shadow-card-subtle hover:shadow-card-hover p-6 sm:p-7 relative overflow-hidden group ${
+                  className={`rounded-2xl bg-white border transition-all duration-200 shadow-card-subtle hover:shadow-card-hover p-6 sm:p-8 relative overflow-hidden group ${
                     isHesta
                       ? 'border-sky-200 hover:border-sky-400 ring-1 ring-sky-100'
                       : 'border-slate-200/90 hover:border-sky-300'
@@ -93,9 +93,9 @@ export const ProjectShowcase: React.FC = () => {
                     }`}
                   />
 
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-                    {/* Main Information Column */}
-                    <div className="space-y-3.5 flex-1">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                    {/* Left Main Information Column (Col 8) */}
+                    <div className="lg:col-span-8 space-y-4">
                       {/* Top Repo Identifier & Tags */}
                       <div className="flex flex-wrap items-center gap-2">
                         {project.repoName && (
@@ -103,7 +103,7 @@ export const ProjectShowcase: React.FC = () => {
                             href={project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 hover:bg-sky-50 hover:text-sky-700 text-slate-700 font-mono text-xs font-semibold border border-slate-200/80 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 hover:text-sky-700 text-slate-700 font-mono text-xs font-semibold border border-slate-200/80 transition-colors"
                           >
                             <GitBranch className="w-3.5 h-3.5 text-sky-600" />
                             <span>{project.repoName}</span>
@@ -116,7 +116,7 @@ export const ProjectShowcase: React.FC = () => {
                         </Badge>
 
                         {project.featured && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                             Trọng tâm
                           </span>
@@ -132,13 +132,13 @@ export const ProjectShowcase: React.FC = () => {
                         <h3 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                           {project.title}
                         </h3>
-                        <p className="text-xs sm:text-sm font-medium text-sky-700 mt-0.5">
+                        <p className="text-xs sm:text-sm font-medium text-sky-700 mt-1">
                           {project.tagline}
                         </p>
                       </div>
 
                       {/* Description */}
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {project.description}
                       </p>
 
@@ -155,12 +155,12 @@ export const ProjectShowcase: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Metrics & Actions Column */}
-                    <div className="lg:w-72 shrink-0 flex flex-col justify-between space-y-4 pt-4 lg:pt-0 lg:pl-6 lg:border-l border-slate-100">
+                    {/* Right Metrics & Actions Column (Col 4) */}
+                    <div className="lg:col-span-4 flex flex-col justify-between space-y-4 lg:pl-6 lg:border-l border-slate-100">
                       {/* Live Metrics Box */}
-                      <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-2">
+                      <div className="p-4 rounded-xl bg-slate-50/90 border border-slate-200/80 space-y-2.5">
                         <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
-                          Chỉ số kỹ thuật
+                          Thông số kỹ thuật
                         </span>
                         <div className="space-y-1.5">
                           {project.metrics.map((metric, mIdx) => (
@@ -178,13 +178,13 @@ export const ProjectShowcase: React.FC = () => {
                       </div>
 
                       {/* Direct Buttons */}
-                      <div className="flex flex-col sm:flex-row lg:flex-col gap-2">
+                      <div className="flex flex-col gap-2">
                         {project.links.github && (
                           <a
                             href={project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-xs active:scale-[0.98]"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-xs active:scale-[0.98]"
                           >
                             <GithubIcon className="w-4 h-4 text-white" />
                             <span>Mở GitHub Repository</span>
