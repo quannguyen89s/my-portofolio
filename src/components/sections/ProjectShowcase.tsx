@@ -39,7 +39,7 @@ export const ProjectShowcase: React.FC = () => {
 
   return (
     <section id="projects" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="wide">
+      <Container size="narrow">
         <SectionHeader
           number="// 01"
           badge="GITHUB REPOSITORIES & DỰ ÁN"

@@ -8,7 +8,7 @@ import { TIMELINE_ITEMS } from '../../data/portfolioData';
 export const JourneyTimeline: React.FC = () => {
   return (
     <section id="journey" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="wide">
+      <Container size="narrow">
         <SectionHeader
           number="// 03"
           badge="HỌC VẤN & ĐÀO TẠO"

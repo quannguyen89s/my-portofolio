@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
           : 'bg-transparent py-4'
       }`}
     >
-      <Container size="wide">
+      <Container size="narrow">
         <div className="flex items-center justify-between">
           {/* Logo / Monogram */}
           <a

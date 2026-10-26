@@ -46,7 +46,7 @@ export const SkillsArchitecture: React.FC = () => {
 
   return (
     <section id="skills" className="py-16 sm:py-24 relative border-b border-slate-200/80">
-      <Container size="wide">
+      <Container size="narrow">
         <SectionHeader
           number="// 02"
           badge="KỸ NĂNG & CÔNG NGHỆ"
@@ -81,8 +81,8 @@ export const SkillsArchitecture: React.FC = () => {
           }
         />
 
-        {/* 6 Category Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        {/* 6 Category Bento Grid - 2 Column Clean Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           <AnimatePresence mode="popLayout">
             {displayedCategories.map((category, idx) => {
               const icon = CATEGORY_ICONS[category.id] || <Sparkles className="w-4 h-4 text-sky-600" />;
