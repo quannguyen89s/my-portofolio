@@ -25,26 +25,26 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={`Chi tiết dự án — ${project.title}`}
+      title={`Project Details — ${project.title}`}
       maxWidth="4xl"
     >
       <div className="space-y-6">
         {/* Header Summary */}
-        <div className="space-y-2.5 pb-5 border-b border-slate-200">
+        <div className="space-y-2.5 pb-5 border-b border-slate-200/80 dark:border-white/[0.08]">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="ocean">{project.category}</Badge>
             <Badge variant="surface">{project.year}</Badge>
-            {project.featured && <Badge variant="success">Dự án chính</Badge>}
+            {project.featured && <Badge variant="success">Key Project</Badge>}
           </div>
 
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight text-balance">
             {project.title}
           </h2>
-          <p className="text-sm text-sky-700 font-medium">
+          <p className="text-sm text-sky-600 dark:text-sky-400 font-semibold">
             {project.tagline}
           </p>
 
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-0.5">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-0.5 text-pretty">
             {caseStudy.overview}
           </p>
         </div>
@@ -54,12 +54,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           {project.metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center sm:text-left"
+              className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.08] text-center sm:text-left"
             >
-              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
                 {metric.label}
               </p>
-              <p className="text-xl font-mono font-bold text-sky-700 mt-0.5">
+              <p className="text-xl font-mono font-bold text-sky-600 dark:text-sky-400 mt-0.5 tabular-nums">
                 {metric.value}
               </p>
             </div>
@@ -69,23 +69,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         {/* The Challenge & The Solution */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Challenge */}
-          <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-1.5">
-            <div className="flex items-center gap-1.5 text-rose-800 text-xs font-semibold">
-              <AlertTriangle className="w-4 h-4 text-rose-600" />
-              <span>Thách thức kỹ thuật</span>
+          <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 space-y-1.5">
+            <div className="flex items-center gap-1.5 text-rose-700 dark:text-rose-300 text-xs font-bold">
+              <AlertTriangle className="w-4 h-4 text-rose-500 dark:text-rose-400 shrink-0" />
+              <span>Technical Challenge</span>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
               {caseStudy.challenge}
             </p>
           </div>
 
           {/* Solution */}
-          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-1.5">
-            <div className="flex items-center gap-1.5 text-emerald-800 text-xs font-semibold">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>Giải pháp triển khai</span>
+          <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 space-y-1.5">
+            <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-300 text-xs font-bold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
+              <span>Implemented Solution</span>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
               {caseStudy.solution}
             </p>
           </div>
@@ -93,18 +93,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
         {/* Architectural Highlights */}
         <div className="space-y-2.5">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
-            <Cpu className="w-4 h-4 text-sky-600" />
-            <span>Điểm sáng kiến trúc</span>
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <Cpu className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+            <span>Architectural Highlights</span>
           </div>
           <div className="space-y-1.5">
             {caseStudy.architectureHighlights.map((highlight, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-100 text-xs text-slate-700"
+                className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-200/70 dark:border-white/[0.06] text-xs text-slate-700 dark:text-slate-300"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
-                <span>{highlight}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 dark:bg-sky-400 shrink-0" />
+                <span className="text-pretty">{highlight}</span>
               </div>
             ))}
           </div>
@@ -112,18 +112,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
         {/* Measurable Outcomes */}
         <div className="space-y-2.5">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
-            <Activity className="w-4 h-4 text-emerald-600" />
-            <span>Kết quả đạt được</span>
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <Activity className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span>Measurable Outcomes</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {caseStudy.keyOutcomes.map((outcome, idx) => (
               <div
                 key={idx}
-                className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"
+                className="p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-200/70 dark:border-white/[0.06] flex items-center gap-2"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="text-xs text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span className="text-xs text-slate-700 dark:text-slate-300 text-pretty">
                   {outcome}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         </div>
 
         {/* Actions Footer */}
-        <div className="pt-5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="pt-5 pb-2 border-t border-slate-200/80 dark:border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             {project.links.github && (
               <Button
@@ -141,9 +141,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 target="_blank"
                 variant="primary"
                 size="md"
+                className="justify-center text-center"
                 iconLeft={<GithubIcon className="w-4 h-4" />}
               >
-                Mã nguồn GitHub
+                GitHub Repository
               </Button>
             )}
             {project.links.live && (
@@ -153,15 +154,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 target="_blank"
                 variant="secondary"
                 size="md"
+                className="justify-center text-center"
                 iconRight={<ExternalLink className="w-4 h-4" />}
               >
-                Xem trực tiếp
+                Live Demo
               </Button>
             )}
           </div>
 
-          <Button onClick={onClose} variant="ghost" size="md">
-            Đóng
+          <Button onClick={onClose} variant="secondary" size="md" className="justify-center text-center">
+            Close
           </Button>
         </div>
       </div>

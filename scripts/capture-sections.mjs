@@ -23,7 +23,21 @@ async function captureSections() {
     const el = await page.$(`#${id}`);
     if (el) {
       await el.scrollIntoView();
-      await delay(500); // allow scroll reveal animation
+      await delay(300);
+      // Scroll through the section to trigger any whileInView animations
+      await page.evaluate(async (elementId) => {
+        const section = document.getElementById(elementId);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const top = window.scrollY + rect.top;
+          const height = rect.height;
+          for (let y = top; y < top + height; y += 400) {
+            window.scrollTo(0, y);
+            await new Promise(r => setTimeout(r, 100));
+          }
+        }
+      }, id);
+      await delay(600);
       await el.screenshot({ path: path.join(__dirname, `../section-${id}.png`) });
       console.log(`Captured section-${id}.png`);
     }

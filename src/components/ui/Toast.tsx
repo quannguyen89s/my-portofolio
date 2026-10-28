@@ -23,20 +23,20 @@ export const Toast: React.FC<ToastProps> = ({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border border-sky-200 text-slate-800 px-4 py-3 rounded-xl shadow-xl"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white dark:bg-[#0F1626] border border-slate-200 dark:border-white/[0.12] text-slate-900 dark:text-white px-4 py-3 rounded-xl shadow-xl dark:shadow-card-elevated"
           role="status"
           aria-live="polite"
         >
           {type === 'success' ? (
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-emerald-500 dark:text-emerald-400 shrink-0" />
           ) : (
-            <AlertCircle className="w-5 h-5 text-sky-600 shrink-0" />
+            <AlertCircle className="w-5 h-5 text-sky-500 dark:text-sky-400 shrink-0" />
           )}
-          <span className="text-sm font-medium pr-2">{message}</span>
+          <span className="text-sm font-medium pr-2 text-slate-800 dark:text-slate-100">{message}</span>
           <button
             onClick={onClose}
-            aria-label="Đóng thông báo"
-            className="text-slate-400 hover:text-slate-700 transition-colors p-1 rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-600 cursor-pointer"
+            aria-label="Close notification"
+            className="text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors p-1 rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-400 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>

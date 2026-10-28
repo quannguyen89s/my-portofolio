@@ -30,43 +30,55 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const paddingClasses = {
+      sm: 'px-3 py-1.5',
+      md: 'px-4 py-2',
+      lg: 'px-5 py-2.5',
+    };
+
+    const sizeTextClasses = {
+      sm: 'text-xs gap-1.5 rounded-lg',
+      md: 'text-xs sm:text-sm gap-2 rounded-xl',
+      lg: 'text-sm sm:text-base gap-2.5 rounded-xl',
+    };
+
     const baseClasses =
-      'inline-flex items-center justify-center font-medium transition-all duration-200 select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+      'inline-flex items-center justify-center text-center font-semibold select-none transition-[transform,background-color,border-color,box-shadow,color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#090D16] active:scale-[0.96] disabled:opacity-40 disabled:pointer-events-none disabled:active:scale-100 cursor-pointer';
 
     const variants = {
       primary:
-        'bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow-[0_4px_14px_0_rgba(2,132,199,0.28)] hover:shadow-[0_6px_20px_0_rgba(2,132,199,0.38)] border border-sky-600',
-      ocean:
-        'bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 hover:border-sky-300',
-      electric:
-        'bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 hover:border-sky-300',
+        'bg-sky-600 hover:bg-sky-500 text-white dark:bg-sky-400 dark:hover:bg-sky-300 dark:text-slate-950 font-bold shadow-md hover:shadow-lg dark:shadow-[0_0_20px_rgba(56,189,248,0.3)] dark:hover:shadow-[0_0_28px_rgba(56,189,248,0.45)] border border-sky-500 dark:border-sky-300',
       secondary:
-        'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-300 shadow-xs',
+        'bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.1] dark:text-slate-200 dark:border-white/[0.1] dark:hover:border-white/[0.2] shadow-2xs',
       outline:
-        'bg-transparent hover:bg-slate-100 text-slate-700 border border-slate-300',
+        'bg-transparent hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-300 dark:hover:bg-white/[0.06] dark:text-slate-300 dark:hover:text-white dark:border-white/[0.15] dark:hover:border-white/[0.3]',
       ghost:
-        'bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900',
+        'bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 dark:hover:bg-white/[0.06] dark:text-slate-400 dark:hover:text-slate-100',
+      ocean:
+        'bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 dark:bg-sky-500/10 dark:hover:bg-sky-500/20 dark:text-sky-300 dark:border-sky-500/30 dark:hover:border-sky-500/50 shadow-2xs',
+      electric:
+        'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 dark:bg-indigo-500/10 dark:hover:bg-indigo-500/20 dark:text-indigo-300 dark:border-indigo-500/30 dark:hover:border-indigo-500/50 shadow-2xs',
     };
 
-    const sizes = {
-      sm: 'text-xs px-3.5 py-1.5 gap-1.5',
-      md: 'text-sm px-4 py-2 gap-2',
-      lg: 'text-base px-6 py-3 gap-2.5',
-    };
-
-    const classes = cn(baseClasses, variants[variant], sizes[size], className);
+    const classes = cn(
+      baseClasses,
+      sizeTextClasses[size],
+      paddingClasses[size],
+      variants[variant],
+      className
+    );
 
     if (asAnchor && href) {
       return (
         <a
           href={href}
           target={target}
-          rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+          rel={rel}
           className={classes}
         >
-          {iconLeft && <span className="inline-flex shrink-0">{iconLeft}</span>}
-          <span>{children}</span>
-          {iconRight && <span className="inline-flex shrink-0">{iconRight}</span>}
+          {iconLeft && <span className="shrink-0 inline-flex items-center justify-center">{iconLeft}</span>}
+          <span className="text-center">{children}</span>
+          {iconRight && <span className="shrink-0 inline-flex items-center justify-center">{iconRight}</span>}
         </a>
       );
     }
@@ -74,13 +86,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        type="button"
         disabled={disabled}
         className={classes}
         {...props}
       >
-        {iconLeft && <span className="inline-flex shrink-0">{iconLeft}</span>}
-        <span>{children}</span>
-        {iconRight && <span className="inline-flex shrink-0">{iconRight}</span>}
+        {iconLeft && <span className="shrink-0 inline-flex items-center justify-center">{iconLeft}</span>}
+        <span className="text-center">{children}</span>
+        {iconRight && <span className="shrink-0 inline-flex items-center justify-center">{iconRight}</span>}
       </button>
     );
   }

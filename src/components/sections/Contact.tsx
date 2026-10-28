@@ -6,9 +6,10 @@ import {
   Send, 
   Calendar, 
   Clock, 
-  MessageSquare 
+  MessageSquare,
+  Sparkles
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '../icons/BrandIcons';
+import { GithubIcon } from '../icons/BrandIcons';
 import confetti from 'canvas-confetti';
 import { Container } from '../layout/Container';
 import { SectionHeader } from '../ui/SectionHeader';
@@ -25,7 +26,6 @@ export const Contact: React.FC = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    serviceType: 'Phát triển Frontend / Web App',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,15 +35,15 @@ export const Contact: React.FC = () => {
   const copyEmailToClipboard = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
-    setToastMessage('Đã sao chép địa chỉ email vào clipboard!');
+    setToastMessage('Email address copied to clipboard!');
     setToastOpen(true);
 
     try {
       confetti({
-        particleCount: 45,
+        particleCount: 50,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ['#0284C7', '#38BDF8', '#0EA5E9', '#10B981'],
+        colors: ['#38BDF8', '#0EA5E9', '#10B981', '#6366F1'],
       });
     } catch {}
 
@@ -52,16 +52,16 @@ export const Contact: React.FC = () => {
 
   const validateForm = () => {
     const errors: { [key: string]: string } = {};
-    if (!formState.name.trim()) errors.name = 'Vui lòng nhập họ tên của bạn';
+    if (!formState.name.trim()) errors.name = 'Please enter your name';
     if (!formState.email.trim()) {
-      errors.email = 'Vui lòng nhập email';
+      errors.email = 'Please enter your email';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
-      errors.email = 'Email không đúng định dạng';
+      errors.email = 'Please enter a valid email address';
     }
     if (!formState.message.trim()) {
-      errors.message = 'Vui lòng nhập nội dung tin nhắn';
+      errors.message = 'Please enter your message';
     } else if (formState.message.trim().length < 10) {
-      errors.message = 'Nội dung tối thiểu 10 ký tự';
+      errors.message = 'Message must be at least 10 characters';
     }
     return errors;
   };
@@ -80,12 +80,11 @@ export const Contact: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      setToastMessage('Đã gửi tin nhắn! Tôi sẽ phản hồi sớm nhất.');
+      setToastMessage('Message sent! I will respond as soon as possible.');
       setToastOpen(true);
       setFormState({
         name: '',
         email: '',
-        serviceType: 'Phát triển Frontend / Web App',
         message: '',
       });
 
@@ -96,83 +95,82 @@ export const Contact: React.FC = () => {
           origin: { y: 0.7 },
         });
       } catch {}
-    }, 800);
+    }, 700);
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 relative">
+    <section id="contact" className="py-20 sm:py-28 relative scroll-mt-16">
       <Container size="default">
         <SectionHeader
-          number="// 04"
-          badge="LIÊN HỆ & KẾT NỐI"
-          title="Sẵn sàng trao đổi & hợp tác."
-          subtitle="Hãy gửi email hoặc để lại tin nhắn nếu bạn cần trao đổi về dự án hoặc cơ hội thực tập tại Đà Nẵng / Remote."
+          badge="GET IN TOUCH"
+          title="Let's Connect & Collaborate."
+          subtitle="Feel free to reach out directly via email or send a message below for inquiries or opportunities."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: Direct Info (Col 5) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-card-subtle space-y-5">
+            <div className="p-6 sm:p-7 rounded-2xl bg-white/80 dark:bg-[#0F1626]/70 border border-slate-200/90 dark:border-white/[0.08] shadow-card-subtle space-y-5 transition-colors duration-200">
               <div className="space-y-1.5">
-                <span className="text-xs font-mono uppercase tracking-wider text-sky-700 font-semibold">
-                  Liên hệ trực tiếp
+                <span className="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold">
+                  Direct Contact
                 </span>
-                <h3 className="text-xl font-bold text-slate-900">
-                  Sẵn sàng trao đổi công việc
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight text-balance">
+                  Quick Connect
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Bạn có thể sao chép email nhanh hoặc gửi biểu mẫu bên cạnh. Tôi phản hồi trong vòng 24 giờ.
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
+                  You can copy my email directly or send a message using the form. I typically respond within 24 hours.
                 </p>
               </div>
 
               {/* One-click email copy card */}
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.08] flex items-center justify-between gap-3 transition-colors duration-200">
                 <div className="flex items-center gap-2.5 overflow-hidden">
-                  <Mail className="w-4 h-4 text-sky-600 shrink-0" />
-                  <span className="font-mono text-xs sm:text-sm text-slate-800 truncate select-all">
+                  <Mail className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+                  <span className="font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200 truncate select-all font-medium">
                     {PERSONAL_INFO.email}
                   </span>
                 </div>
                 <button
                   onClick={copyEmailToClipboard}
-                  className="px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 text-xs font-medium flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
-                  aria-label="Sao chép email"
+                  className="px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-500/15 hover:bg-sky-100 dark:hover:bg-sky-500/25 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-500/30 text-xs font-semibold inline-flex items-center justify-center gap-1.5 shrink-0 active:scale-[0.96] transition-[transform,background-color,border-color] duration-150 cursor-pointer shadow-2xs text-center"
+                  aria-label="Copy email"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700">Đã chép</span>
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <span className="text-emerald-700 dark:text-emerald-300">Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Sao chép</span>
+                      <Copy className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" />
+                      <span>Copy</span>
                     </>
                   )}
                 </button>
               </div>
 
               {/* Service Commitments */}
-              <div className="space-y-2 pt-1 text-xs text-slate-600">
+              <div className="space-y-2 pt-1 text-xs text-slate-500 dark:text-slate-400">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-sky-600 shrink-0" />
-                  <span>Thời gian phản hồi: &lt; 24 giờ</span>
+                  <Clock className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+                  <span>Response time: <strong className="text-slate-800 dark:text-slate-200 font-mono tabular-nums">&lt; 24 hours</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Sẵn sàng cho các dự án mới</span>
+                  <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span>Available for projects & opportunities</span>
                 </div>
               </div>
 
               {/* Social Channels */}
-              <div className="pt-3 border-t border-slate-100 flex items-center gap-3">
+              <div className="pt-3 border-t border-slate-200/80 dark:border-white/[0.06] flex items-center gap-3">
                 <a
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-mono text-slate-700 hover:text-sky-700 transition-colors font-medium"
+                  className="flex items-center gap-1.5 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors font-medium"
                 >
-                  <GithubIcon className="w-4 h-4" />
+                  <GithubIcon className="w-4 h-4 shrink-0" />
                   <span>github.com/quannguyen89s</span>
                 </a>
               </div>
@@ -181,65 +179,63 @@ export const Contact: React.FC = () => {
 
           {/* Right Column: Contact Form (Col 7) */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-card-subtle">
-              <div className="mb-5 pb-3 border-b border-slate-100 flex items-center justify-between">
+            <div className="p-6 sm:p-7 rounded-2xl bg-white/80 dark:bg-[#0F1626]/70 border border-slate-200/90 dark:border-white/[0.08] shadow-card-subtle transition-colors duration-200">
+              <div className="mb-5 pb-3 border-b border-slate-200/80 dark:border-white/[0.06] flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-sky-600" />
-                  <h4 className="text-sm font-bold text-slate-900">
-                    Gửi tin nhắn trực tuyến
+                  <MessageSquare className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">
+                    Send a Direct Message
                   </h4>
                 </div>
-                <span className="text-[11px] font-mono text-slate-400">
-                  contact.form
-                </span>
               </div>
 
               {isSuccess ? (
-                <div className="p-6 text-center space-y-3 rounded-xl bg-emerald-50 border border-emerald-200">
-                  <div className="w-10 h-10 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <div className="p-6 text-center space-y-3 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/25">
+                  <div className="w-10 h-10 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <Check className="w-5 h-5" />
                   </div>
-                  <h5 className="text-base font-bold text-slate-900">
-                    Đã nhận tin nhắn!
+                  <h5 className="text-base font-bold text-slate-900 dark:text-white">
+                    Message Received!
                   </h5>
-                  <p className="text-xs text-slate-600 max-w-sm mx-auto">
-                    Cảm ơn bạn đã liên hệ. Tôi sẽ xem xét thông tin và phản hồi sớm nhất.
+                  <p className="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto text-pretty">
+                    Thank you for reaching out. I will review your message and respond as soon as possible.
                   </p>
                   <Button
                     onClick={() => setIsSuccess(false)}
                     variant="outline"
                     size="sm"
+                    className="justify-center text-center"
                   >
-                    Gửi tin nhắn khác
+                    Send Another Message
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-xs font-mono font-medium text-slate-700 mb-1"
+                        className="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                       >
-                        Họ và tên <span className="text-sky-600">*</span>
+                        Full Name <span className="text-sky-600 dark:text-sky-400">*</span>
                       </label>
                       <input
                         id="name"
                         type="text"
-                        placeholder="Nguyễn Văn A"
+                        placeholder="Alex Morgan"
                         value={formState.name}
                         onChange={(e) =>
                           setFormState({ ...formState, name: e.target.value })
                         }
-                        className={`w-full px-3.5 py-2 rounded-xl bg-slate-50 border text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none transition-colors ${
+                        className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border text-base sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:bg-white dark:focus:bg-white/[0.05] transition-[border-color,box-shadow,background-color] duration-150 ${
                           formErrors.name
-                            ? 'border-rose-400 focus:border-rose-500'
-                            : 'border-slate-200 focus:border-sky-500'
+                            ? 'border-rose-400 focus:border-rose-400 focus:ring-1 focus:ring-rose-400/50'
+                            : 'border-slate-200 dark:border-white/[0.1] focus:border-sky-500 dark:focus:border-sky-400 focus:ring-1 focus:ring-sky-500/30 dark:focus:ring-sky-400/40'
                         }`}
                       />
                       {formErrors.name && (
-                        <p className="text-[11px] text-rose-600 mt-1">
+                        <p className="text-[11px] text-rose-500 dark:text-rose-400 mt-1">
                           {formErrors.name}
                         </p>
                       )}
@@ -249,9 +245,9 @@ export const Contact: React.FC = () => {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-xs font-mono font-medium text-slate-700 mb-1"
+                        className="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                       >
-                        Email liên hệ <span className="text-sky-600">*</span>
+                        Email Address <span className="text-sky-600 dark:text-sky-400">*</span>
                       </label>
                       <input
                         id="email"
@@ -261,80 +257,49 @@ export const Contact: React.FC = () => {
                         onChange={(e) =>
                           setFormState({ ...formState, email: e.target.value })
                         }
-                        className={`w-full px-3.5 py-2 rounded-xl bg-slate-50 border text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none transition-colors ${
+                        className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border text-base sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:bg-white dark:focus:bg-white/[0.05] transition-[border-color,box-shadow,background-color] duration-150 ${
                           formErrors.email
-                            ? 'border-rose-400 focus:border-rose-500'
-                            : 'border-slate-200 focus:border-sky-500'
+                            ? 'border-rose-400 focus:border-rose-400 focus:ring-1 focus:ring-rose-400/50'
+                            : 'border-slate-200 dark:border-white/[0.1] focus:border-sky-500 dark:focus:border-sky-400 focus:ring-1 focus:ring-sky-500/30 dark:focus:ring-sky-400/40'
                         }`}
                       />
                       {formErrors.email && (
-                        <p className="text-[11px] text-rose-600 mt-1">
+                        <p className="text-[11px] text-rose-500 dark:text-rose-400 mt-1">
                           {formErrors.email}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  {/* Project Scope */}
-                  <div>
-                    <label
-                      htmlFor="serviceType"
-                      className="block text-xs font-mono font-medium text-slate-700 mb-1"
-                    >
-                      Lĩnh vực quan tâm
-                    </label>
-                    <select
-                      id="serviceType"
-                      value={formState.serviceType}
-                      onChange={(e) =>
-                        setFormState({ ...formState, serviceType: e.target.value })
-                      }
-                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-sky-500 cursor-pointer"
-                    >
-                      <option value="Phát triển Frontend / Web App">
-                        Phát triển ứng dụng Web (React / TypeScript)
-                      </option>
-                      <option value="Xây dựng Backend / API">
-                        Xây dựng hệ thống Backend & API (Node.js / Java)
-                      </option>
-                      <option value="Dự án phần mềm Full-Stack">
-                        Dự án phần mềm trọn gói (Full-Stack)
-                      </option>
-                      <option value="Cơ hội tuyển dụng Software Developer">
-                        Cơ hội tuyển dụng Software Developer
-                      </option>
-                    </select>
-                  </div>
-
                   {/* Message */}
                   <div>
-                    <div className="flex justify-between items-center mb-1">
+                    <div className="flex justify-between items-center mb-1.5">
                       <label
                         htmlFor="message"
-                        className="block text-xs font-mono font-medium text-slate-700"
+                        className="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300"
                       >
-                        Nội dung tin nhắn <span className="text-sky-600">*</span>
+                        Your Message <span className="text-sky-600 dark:text-sky-400">*</span>
                       </label>
-                      <span className="text-[10px] font-mono text-slate-400">
-                        {formState.message.length} ký tự
+                      <span className="text-[10px] font-mono text-slate-500 tabular-nums">
+                        {formState.message.length} characters
                       </span>
                     </div>
                     <textarea
                       id="message"
-                      rows={3}
-                      placeholder="Mô tả ngắn gọn về yêu cầu dự án hoặc nội dung trao đổi..."
+                      rows={4}
+                      placeholder="Describe your inquiry, project details, or opportunity..."
                       value={formState.message}
                       onChange={(e) =>
                         setFormState({ ...formState, message: e.target.value })
                       }
-                      className={`w-full px-3.5 py-2 rounded-xl bg-slate-50 border text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none transition-colors resize-y ${
+                      className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border text-base sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:bg-white dark:focus:bg-white/[0.05] transition-[border-color,box-shadow,background-color] duration-150 resize-y ${
                         formErrors.message
-                          ? 'border-rose-400 focus:border-rose-500'
-                          : 'border-slate-200 focus:border-sky-500'
+                          ? 'border-rose-400 focus:border-rose-400 focus:ring-1 focus:ring-rose-400/50'
+                          : 'border-slate-200 dark:border-white/[0.1] focus:border-sky-500 dark:focus:border-sky-400 focus:ring-1 focus:ring-sky-500/30 dark:focus:ring-sky-400/40'
                       }`}
                     />
                     {formErrors.message && (
-                      <p className="text-[11px] text-rose-600 mt-1">
+                      <p className="text-[11px] text-rose-500 dark:text-rose-400 mt-1">
                         {formErrors.message}
                       </p>
                     )}
@@ -345,11 +310,11 @@ export const Contact: React.FC = () => {
                       type="submit"
                       variant="primary"
                       size="md"
-                      className="w-full sm:w-auto"
+                      className="w-full sm:w-auto justify-center text-center"
                       disabled={isSubmitting}
                       iconRight={<Send className="w-4 h-4" />}
                     >
-                      {isSubmitting ? 'Đang gửi...' : 'Gửi tin nhắn'}
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </div>
                 </form>

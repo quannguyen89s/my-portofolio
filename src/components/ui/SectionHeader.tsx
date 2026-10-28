@@ -23,29 +23,31 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        'mb-10 md:mb-12',
-        alignment === 'center' ? 'text-center mx-auto max-w-2xl' : 'flex flex-col md:flex-row md:items-end md:justify-between gap-4',
+        'mb-10 sm:mb-12',
+        alignment === 'center'
+          ? 'text-center mx-auto max-w-2xl'
+          : 'flex flex-col md:flex-row md:items-end md:justify-between gap-5',
         className
       )}
     >
       <div className={alignment === 'center' ? '' : 'max-w-xl'}>
-        <div className={cn('flex items-center gap-2 mb-2.5', alignment === 'center' && 'justify-center')}>
-          {number && (
-            <span className="font-mono text-xs text-sky-600 font-semibold tracking-wider">
-              {number}
-            </span>
+        <div
+          className={cn(
+            'flex items-center gap-2 mb-3',
+            alignment === 'center' && 'justify-center'
           )}
+        >
           {badge && (
-            <span className="inline-flex items-center text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
+            <span className="inline-flex items-center text-[11px] font-mono font-semibold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 dark:bg-sky-500/10 dark:text-sky-300 dark:border-sky-500/20 shadow-2xs">
               {badge}
             </span>
           )}
         </div>
-        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.18] text-balance">
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-2 text-sm sm:text-base text-slate-600 leading-normal">
+          <p className="mt-2.5 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed text-pretty">
             {subtitle}
           </p>
         )}

@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies and build
 node_modules
 dist
 dist-ssr
@@ -23,5 +24,20 @@ dist-ssr
 *.sln
 *.sw?
 
-# Previews
-*.png
+# Agent skills & configs
+.agents/
+skills-lock.json
+
+# Python & test files
+*.py
+*.pyc
+__pycache__/
+test/
+tests/
+*.test.*
+*.spec.*
+
+# Temporary preview screenshots at root
+/*.png
+!src/assets/**
+!public/**
