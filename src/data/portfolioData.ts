@@ -1,4 +1,5 @@
 import { Project, TimelineItem, SkillCategory } from "../types/portfolio";
+import avatarImg from "../assets/avatar.png";
 
 export const PERSONAL_INFO = {
   name: "Nguyễn Anh Quân",
@@ -8,7 +9,7 @@ export const PERSONAL_INFO = {
   role: "Software Developer",
   shortBio:
     "I am a final-year Software Engineering student with knowledge of both Front-end and Back-end development. I have experience working with React.js, TypeScript, JavaScript, Node.js, and databases through academic and personal projects. I am eager to strengthen my technical skills, gain practical experience, and contribute to real-world software development projects.",
-  avatar: "https://avatars.githubusercontent.com/u/161696764?v=4",
+  avatar: avatarImg,
   location: "Da Nang, Vietnam",
   email: "quann89.dev@gmail.com",
   github: "https://github.com/quannguyen89s",
